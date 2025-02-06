@@ -7,14 +7,22 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ng-container *ngIf="JokeList; else loading">
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>
+          {{Joke.value}}
+        </ion-card-title>
+      </ion-card-header>
+    </ion-card>
+    <ion-card *ngFor="let item of JokeList index as i">
+      <ion-card-header>
+        <ion-card-title>{{item}}</ion-card-title>
+      </ion-card-header>
+    </ion-card>
+  </ng-container>
+  <ng-template #loading>
+    <ion-spinner name="crescent"></ion-spinner>
+  </ng-template>
 </ion-content>
